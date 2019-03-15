@@ -1,11 +1,11 @@
-const TODO = () => Error('Not implemented')
+//const TODO = () => Error('Not implemented')
 
 /**
  * 1: Return the sum of two numbers
  */
 
 export function sum(a: number, b: number): number {
-    throw TODO()
+    return a + b
 }
 
 /**
@@ -18,7 +18,7 @@ export interface Vec2 {
 }
 
 export function lengthVec2(v: Vec2): number {
-    throw TODO()
+    return Math.sqrt(Math.pow(v.x, 2) + Math.pow(v.y, 2))
 }
 
 /**
@@ -30,7 +30,7 @@ export interface Vec3 extends Vec2 {
 }
 
 export function lengthVec3(v: Vec3): number {
-    throw TODO()
+    return Math.sqrt(Math.pow(v.x, 2) + Math.pow(v.y, 2) + Math.pow(v.z, 2))
 }
 
 /**
@@ -38,7 +38,7 @@ export function lengthVec3(v: Vec3): number {
  */
 
 export function fibo(n: number): number {
-    throw TODO()
+    return n <= 2 ? n - 1 : fibo(n - 1) + fibo(n - 2)
 }
 
 /**
@@ -46,7 +46,7 @@ export function fibo(n: number): number {
  */
 
 export function longestOfThree(a: string, b: string, c: string): string {
-    throw TODO()
+    return a.length > b.length && a.length > c.length ? a : b.length > c.length ? b : c 
 }
 
 /**
@@ -54,14 +54,20 @@ export function longestOfThree(a: string, b: string, c: string): string {
  */
 
 export function longestOfMany(...strings: string[]): string {
-    throw TODO()
+    let long: string = ''
+    for(let i : number = 0; i < strings.length; i++) {
+        if(strings[i].length > long.length) {
+            long = strings[i]
+        }
+    }
+    return long
 }
 
 /**
  * Check if a value is a number
  */
 export function isNumber(value: any): value is number {
-    throw TODO()
+    return typeof value === 'number'
 }
 
 export interface User {
@@ -73,7 +79,7 @@ export interface User {
  * Get users nick name, or return a name if one doesn't exist
  */
 export function getUserHandle(user: User): string {
-    throw TODO()
+    return user.nick ? user.nick : user.name
 }
 
 export interface Country {
@@ -86,7 +92,8 @@ export interface Country {
  * Test if a given object is a Country
  */
 export function isCountry(obj: unknown): obj is Country {
-    throw TODO()
+    const country = obj as Country
+    return country && country.name && country.code && country.population ? true : false
 }
 
 /**
@@ -97,7 +104,7 @@ export function greaterThanNumber(
     input: Array<number>,
     n: number
 ): Array<number> {
-    throw TODO()
+    return input.filter(num => num > n)
 }
 
 /**
@@ -105,5 +112,5 @@ export function greaterThanNumber(
  */
 
 export function toPowerOf(input: Array<number>, n: number): Array<number> {
-    throw TODO()
+    return input.map(num => Math.pow(num, n))
 }
